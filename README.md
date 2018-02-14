@@ -1,1 +1,2 @@
 # FamilyMaps
+[x] dome
