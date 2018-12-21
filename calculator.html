@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <!-- ne baidu transkodo -->
+  <meta name="Cache-Control" content="no-siteapp">
+
+  <!-- pwa -->
+  <!-- <link rel="manifest" href="manifest.json"> -->
+
+  <!-- apple and window -->
+  <meta name="apple-mobile-web-app-title" content="👨‍👩‍👧‍👦">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta name="msapplication-TitleImage" content="make/logo.png">
+  <meta name="msapplication-TitleColor" content="#f9f9f9">
+
+  <!-- informo gup -->
+  <meta name="description" content="🐚">
+  <meta name="keywords" content="🐚">
+  <meta name="author" content="@wolfan">
+
+  <title>👨‍👩‍👧‍👦</title>
+
+  <link rel="stylesheet" href="core/familyStyle.css">
+
+</head>
+<body>
+
+  <!-- container -->
+  <div class="em">
+    <!-- print show -->
+    <div id="print-en">
+      <div id="conut-bl" class="">
+        <!-- <i>我的</i>谁的谁的谁<i>是？</i> -->
+        <b>我</b>
+      </div>
+      <div id="view-bl" class="">
+        <div id="relationship"><b>我们是</b>嘻嘻<b>关系</b></div>
+        <div id="appellation-to-he"><b>我叫（他/她）</b>嘻嘻</div>
+        <div id="applellation-to-me"><b>（他/她）叫我</b>哧哧</div>
+      </div>
+    </div>
+
+    <!-- keybar in value -->
+    <div id="keybar-en">
+      <!-- Option: gender(m,w) overtax(i,o) -->
+      <div id="option-bl"></div>
+      <!-- keybar button -->
+      <div id="button-bl" class="colmun">
+        <!-- button value's -->
+        <div id="in-gup">
+          <div id="inlf-bl">
+            <button onclick="vl(9)" id="vl-husband">夫</button>
+            <button onclick="vl(9)" id="vl-wife">妻</button>
+          </div>
+          <div id="inrg-bl">
+            <div class="row-5">
+              <button onclick="vl(1)" id="vl-father">父</button>
+              <button onclick="vl(2)" id="vlmother">母</button>
+            </div>
+            <div class="row-2">
+              <button onclick="vl(3)" id="vl-brother">兄</button>
+              <button onclick="vl(4)" id="vl-sister">姐</button>
+              <button onclick="vl(0)" id="vl-me">😘</button>
+              <button onclick="vl(5)" id="vl-yb">弟</button>
+              <button onclick="vl(6)" id="vl-ys">姐</button>
+            </div>
+            <div class="row-5">
+              <button onclick="vl(7)" id="vl-son">子</button>
+              <button onclick="vl(8)" id="vl-girl">女</button>
+            </div>
+          </div>
+        </div>
+        <!-- push conut enter -->
+        <div id="put-gup">
+          <button onclick="del()" id="bn-del">🔪</button>
+          <button onclick="rest()" id="bn-rst">👏</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
+  <script src="data/family.data.js"></script>
+  <script src="core/family.logic.js"></script>
+-->
+  <script>
+    const v1= document.getElementById('conut-bl');
+    const v2= document.getElementById('view-bl');
+
+    const str= ['我','老子','娘','哥哥','姐姐','弟弟','妹妹','儿砸','女儿','老婆','老公'];
+
+    function vl(int){
+      console.log(int)
+      v1.innerHTML +=  `${str[int]}的`;
+    }
+  </script>
+
+</body>
+</html>

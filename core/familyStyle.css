@@ -1,0 +1,124 @@
+/* family style */
+html,body{
+  height: 100%;
+  overflow: hidden;
+}
+body{
+  margin: 0 auto;
+  color: #5f5f5f;
+  font-family: 'fmtty', KaiTi, SimKaiTi;
+}
+
+button{
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: KaiTi, SimKaiTi;
+  border-style: none;
+  background-color: #f9f9f9;
+  color: #5f5f5f;
+}
+button:hover{
+  background-color: #e9e9e9;
+  color: #333333;
+}
+
+.em{
+  height: 100%;
+}
+#print-en{
+  height: 67%;
+  padding: .3rem;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+}
+  #conut-bl{
+    height: 100%;
+    margin: .3rem auto;
+    border-bottom: 1px dashed #afafaf;
+    overflow-y: scroll;
+    float: left;
+    width: 50%;
+  }
+  #view-bl{
+    height: 100%;
+    margin: .3rem auto;
+    border-bottom: 1px dashed #afafaf;
+    float: left;
+    width: 50%;
+    text-align: center;
+  }
+#keybar-en{
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#option-bl{
+  /* height: 10%; */
+}
+#button-bl{
+    height: 100%;
+  }
+    #in-gup{
+      width: 80%;
+      height: 100%;
+      float: left;
+    }
+      #inlf-bl{
+        float: left;
+        width: 20%;
+        height: 100%;
+      }
+      #inlf-bl button{
+        width: 100%;
+        height: 50%;
+      }
+      #inrg-bl{
+        float: left;
+        width: 80%;
+        height: 100%;
+      }
+      #inrg-bl .row-5, #inrg-bl .row-2{
+        height: 33.33%;
+      }
+      #inrg-bl .row-5 button{
+        float: left;
+        width: 50%;
+        height: 100%;
+      }
+      #inrg-bl .row-2 button{
+        float: left;
+        width: 20%;
+        height: 100%;
+      }
+    #put-gup{
+      width: 20%;
+      height: 100%;
+      float: left;
+    }
+    #put-gup button{
+      width: 100%;
+      height: 50%;
+    }
+
+@media screen and (max-width:768px){
+  .em{
+    width: 100%;
+  }
+  #print-en{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+  #conut-bl{
+    width: 100%;
+    height: 75%;
+    max-height: 75%;
+  }
+  #view-bl{
+    width: 100%;
+    height: 25%;
+  }
+}
+@media screen and (max-width:414px){}
+@media screen and (max-width:375px){}

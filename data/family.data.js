@@ -59,7 +59,3 @@ const familyAppellation={
 		[]
 	}
 }
-
-// LAB
-const R= ancestor[2];
-console.log(R);
