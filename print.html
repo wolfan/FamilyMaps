@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <!-- ne baidu transkodo -->
+  <meta name="Cache-Control" content="no-siteapp">
+
+  <!-- informo gup -->
+  <meta name="description" content="🍒">
+  <meta name="keywords" content="🍒">
+
+  <title>🍒</title>
+
+  <!-- icons -->
+  <link rel="icon" href="make/logo.png">
+  <link rel="apple-touch-icon" href="make/logo.png">
+
+  <link rel="stylesheet" href="core/core/page.css">
+
+  <style>
+    body{}
+    #Family{
+      width: auto;
+      margin: 15% 1.2rem 0;
+      text-align: center;
+    }
+      #oput{
+        font-size: 1.8rem;
+        color: #606060;
+        /* margin: 15% auto; */
+        width: auto;
+        display: inline-block;
+        cursor: pointer;
+      }
+      #oput p{
+        margin: .6rem .3rem .1rem .3rem;
+      }
+      #oput p:hover{color: #303030;}
+      #oput #rilato::before{content: '👶称呼：';}
+      #oput #saluto::before{content: '👪关系：';}
+      #oput #parenceco::before{content: '🌳亲缘：';}
+      #nav-gup{
+        right: 1.2rem;
+        bottom: 1.2rem;
+        position: fixed;
+        text-align: right;
+      }
+        #nav-gup .bn:hover::before{content: '🎮';}
+      /* 弹出框 */
+      .skatolo{
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        display: none;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+      }
+      .skatolo:target{
+        display: flex;
+      }
+        .skatolo .fono{
+          background-color: rgba(0,0,0,.3);
+          position: absolute;
+          display: block;
+          bottom: 0;
+          top: 0;
+          left: 0;
+          right: 0;
+          cursor: not-allowed;
+        }
+        .skatolo .ska-word{
+          width: 30vw;
+          min-width: 25vw;
+          background: #ffffff;
+          z-index: 999;
+          margin: 0 auto;
+          border: 1px solid #efefef;
+          padding: .6rem;
+          position: fixed;
+        }
+  </style>
+
+</head>
+<body>
+  <div id="Family" class="container">
+    <div id="oput">
+      <p id="rilato"></p>
+      <p id="saluto"></p>
+      <p id="parenceco"></p>
+    </div>
+    <!-- input box -->
+    <div id="nav-gup">
+      <a href="#kalkulilo" class="bn">Kalkulilo</a>
+      <a href="#Klano" class="bn">Klano-Arbo</a>
+    </div>
+  </div>
+
+  <!-- 计算器 -->
+  <div id="kalkulilo" class="skatolo">
+    <a href="#" class="fono"></a>
+    <div class="ska-word">
+      <h1>🎰 Kalkulilo</h1>
+      <div id="ekrano"></div>
+      <div id="klavaro">
+        <div id="nau-gup">
+          <!-- 
+            我，丈夫，妻子，儿子，女儿，哥哥，弟弟，姐姐，妹妹，父亲，母亲
+            Mi,Edzo,Edzino,Filo,Filino,Frato,Juna,Fratino,Pli-juna,Patro,Patrino
+          -->
+          <button onclick="Valoro(0)">Mi</button>
+          <button onclick="Valoro(31)">Edzo</button>
+          <button onclick="Valoro(32)">Edzino</button>
+          <button onclick="Valoro(-11)">Filo</button>
+          <button onclick="Valoro(-12)">Filino</button>
+          <button onclick="Valoro(11)">Frato</button>
+          <button onclick="Valoro(13)">Juna</button>
+          <button onclick="Valoro(12)">Fration</button>
+          <button onclick="Valoro(14)">Pli-juna</button>
+          <button onclick="Valoro(21)">Patro</button>
+          <button onclick="Valoro(22)">Patrino</button>
+          <!-- funkcia bntono -->
+          <button onclick="BnKlara()">Klara</button>
+          <button onclick="BnRet()">Retropaŝo</button>
+          <button onclick="BnKalkulo()">Kalkulo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 族亲图 -->
+  <div id="Klano" class="skatolo">
+    <a href="#" class="fono"></a>
+    <div class="ska-word">
+      <h1>Klano 🌲 Arbo</h1>
+      <div id="eniru" contenteditable="true">我的</div>
+    </div>
+  </div>
+
+  <script src="family.js"></script>
+  <script>
+    function Valoro(int){
+      const ekr= document.getElementById('ekrano');
+      const ek= document.querySelector('#ekrano');
+      const arr= [];
+      ek.innerHTML+= int+'de';
+
+
+      // pu(d);
+      const d= arr.unshift(int);
+      console.log(d);
+
+    }
+
+    function d(arr){console.log(arr)}
+  </script>
+</body>
+</html>
