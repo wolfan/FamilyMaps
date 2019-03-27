@@ -15,11 +15,10 @@
 
   <title>🍒</title>
 
-  <!-- icons -->
+  <!-- icons --
   <link rel="icon" href="make/logo.png">
   <link rel="apple-touch-icon" href="make/logo.png">
-
-  <link rel="stylesheet" href="core/core/page.css">
+  -->
 
   <style>
     body{}
@@ -144,20 +143,24 @@
 
   <script src="family.js"></script>
   <script>
+    const ek= document.querySelector('#ekrano');
     function Valoro(int){
-      const ekr= document.getElementById('ekrano');
-      const ek= document.querySelector('#ekrano');
-      const arr= [];
-      ek.innerHTML+= int+'de';
-
-
-      // pu(d);
-      const d= arr.unshift(int);
-      console.log(d);
-
+      let ar= [];
+      // let jn={0:'我',31:'男人',32:'女人',-11:'娃',-12:'女儿',11:'哥',12:'姐',13:'弟',14:'妹',21:'老子',22:'娘'}
+      ar.push(`${int}`);
+      // ek.innerHTML+= `${jn[int]}的`;
+      ekr(ar);
+      return ar;
     }
+    function ekr(arr){ek.innerHTML+= arr;}
 
-    function d(arr){console.log(arr)}
+    function BnKlara(){ek.innerHTML= null;}
+    function BnRet(){
+      let ar= Valoro();
+      let ra= ar.pop();
+      ek.innerHTML= ra;
+    }
+    function BnKalkulo(){}
   </script>
 </body>
 </html>
