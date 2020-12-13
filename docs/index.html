@@ -41,15 +41,13 @@
       font-size: .9rem;
       line-height: 1.2rem;
       text-align: center;
+      font-size: .5rem;
+      line-height: .9rem;
     }
     hr{
       appearance: none;
       border-style: none;
       border-bottom: 1px dashed #a4b0be;
-    }
-    .small{
-      font-size: .5rem;
-      line-height: .9rem;
     }
     .err{color: #ff4757;}
     .labels{
@@ -120,7 +118,7 @@ if("serviceWorker" in navigator){
       document.querySelector('#kasago').innerHTML= `<p>离线服务正常……</p>`;
     })
     .catch(e=>{
-      document.querySelector('#kasago').innerHTML= `<p class="small err">离线错误！${e}</p><a class="label">刷新</a>`;
+      document.querySelector('#kasago').innerHTML= `<p class="err">离线错误！${e}</p><a class="label">刷新</a>`;
     })
 }
 // 信息推送
@@ -142,12 +140,12 @@ E.innerHTML+= `<p><span>页面可视区：</span><span>${document.body.clientWid
 
 // 打印API
 const P= document.querySelector('#presi');
-P.innerHTML+= `<p class="small">${navigator.userAgent}</p>`;
+P.innerHTML+= `<p>${navigator.userAgent}</p>`;
 
 // 地理信息
 if("geolocation" in navigator){
   navigator.geolocation.getCurrentPosition(d=>{
-    document.querySelector('#gyro').innerHTML= `<p class="small"><span>地理信息：${d.coords.altitude}m ${d.coords.accuracy}° ${d.coords.heading}◈ ${d.coords.longitude}ɑ ${d.coords.latitude}β ${d.coords.speed}ζ</p>`
+    document.querySelector('#gyro').innerHTML= `<p><span>地理信息：${d.coords.altitude}m ${d.coords.accuracy}° ${d.coords.heading}◈ ${d.coords.longitude}ɑ ${d.coords.latitude}β ${d.coords.speed}ζ</p>`
   })
 }else{
   P.innerHTML+= `<p class="err">无法打开地理信息！</p>`;
