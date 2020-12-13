@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <!-- informo gup -->
+  <meta name="author" content="@wolfan">
+  <meta name="keywords" content="🍭">
+  <meta name="description" content="🍭">
+
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <!-- accessibility -->
+  <meta name="Cache-Control" content="no-siteapp">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- pwa: manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- pwa: apple -->
+  <link rel="apple-touch-icon" href="res/logo.png">
+  <meta name="apple-mobile-web-app-title" content="🍏">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+  <!-- pwa: windows -->
+  <meta name="application-name" content="🔰">
+  <meta name="msapplication-TitleColor" content="#ffffff">
+  <meta name="msapplication-TitleImage" content="res/logo.png">
+
+  <!-- color and icon -->
+  <meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" type="image/png" href="res/logo.png">
+
+  <title>:Famliy</title>
+  <style>
+    body{
+      margin: 0 auto;
+      color: #57606f;
+      font-size: .9rem;
+      line-height: 1.2rem;
+      text-align: center;
+    }
+    hr{
+      appearance: none;
+      border-style: none;
+      border-bottom: 1px dashed #a4b0be;
+    }
+    .small{
+      font-size: .5rem;
+      line-height: .9rem;
+    }
+    .err{color: #ff4757;}
+    .labels{
+      margin: 1rem auto;
+    }
+    .label{
+      text-decoration: none;
+      color: #fff;
+      background-color: #5352ed;
+      border: .1rem solid #70a1ff;
+      border-radius: 2rem;
+      padding: .15rem .9rem;
+    }
+    .label:hover{
+      background-color: #70a1ff;
+    }
+
+    #Famliy{
+      height: 100vh;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: row wrap;
+    }
+    #Above{flex: 1 1 50%;}
+    #Ekrano{
+      flex: 1 1 50%;
+      text-align: left;
+    }
+    #Ekrano > p{
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+    #Ekrano > p span:last-child{text-align: right;}
+    #Pie{
+      flex: 1 1 50vw;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="Famliy" class="container">
+    <div id="Above">
+      <div class="logo">
+        <img src="res/logo.png">
+      </div>
+      <div class="labels">
+        <a href="https://m.weibo.cn/beta" class="label">微博</a>
+        <a href="https://fm.teksto.site/#/pwa" class="label">PWA</a>
+      </div>
+    </div>
+
+    <div id="Ekrano"></div>
+    
+    <div id="Pie">
+      <div id="presi"></div>
+    </div>
+  </div>
+
+<script>
+// serviceWorker script.
+// if('serviceWorker' in navigator){
+//   navigator.serviceWorker.register('sw.js')
+//   .then((reg)=>{console.log('✔: ',reg)})
+//   .catch((err)=>{console.log('❌: ',err)})}
+
+const P= document.querySelector('#presi');
+// screen val.
+const E= document.querySelector('#Ekrano');
+E.innerHTML+= `<p><span>页面可视区：</span><span>${document.body.clientWidth}</span></p>
+              <p><span>页面含滚区：</span><span>${document.body.offsetWidth}</span></p>
+              <p><span>正文宽：</span><span>${document.body.scrollWidth}</span></p>
+              <p><span>正文高：</span><span>${document.body.scrollHeight}</span></p>
+              <p><span>隐卷高：</span><span>${document.body.scrollTop}</span></p>
+              <hr>
+              <p><span>分辨率宽：</span><span>${window.screen.width}</span></p>
+              <p><span>分辨率高：</span><span>${window.screen.height}</span></p>
+              <p><span>分辨率可用：</span><span>${window.screen.availWidth}</span></p>
+              <p><span>色位：</span><span>${window.screen.colorDepth}</span></p>
+              <p><span>px/em：</span><span>${window.screen.deviceXDPI}</span></p>`;
+
+P.innerHTML+= `<p class="small">${navigator.userAgent}</p>`;
+
+// 地理信息
+if("geolocation" in navigator){
+  navigator.geolocation.getCurrentPosition(d=>{
+    P.innerHTML+= `<p><span>地理信息：${d.coords.altitude}m ${d.coords.accuracy}° ${d.coords.heading}◈ ${d.coords.longitude}ɑ ${d.coords.latitude}β ${d.coords.speed}ζ</p>`
+  })
+}else{
+  P.innerHTML+= `<p class="err">无法打开地理信息！</p>`;
+}
+// 陀螺仪
+if(window.DeviceOrientationEvent){
+  window.addEventListener('deviceorientation', e=>{
+    P.innerHTML+= `<p>陀螺仪：${e.alpha} · ${e.beta} · ${e.gamma}</p>`;
+  })
+}else{
+  p.innerHTML+= `<p class="err">陀螺仪信息错误！</p>`;
+}
+// sw.js
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register('sw.js')
+    .then(r=> {
+      P.innerHTML+= `<p>离线服务正常……</p>`;
+    })
+    .catch(e=>{
+      P.innerHTML+= `<p class="err">离线错误！${e}</p><a class="label">刷新</a>`;
+    })
+}
+
+// 信息推送
+// if("PushManager" in window){}
+</script>
+</body>
+</html>
