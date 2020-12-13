@@ -107,17 +107,25 @@
     
     <div id="Pie">
       <div id="presi"></div>
+      <div id="kasago"></div>
+      <div id="gyro"></div>
     </div>
   </div>
 
 <script>
 // serviceWorker script.
-// if('serviceWorker' in navigator){
-//   navigator.serviceWorker.register('sw.js')
-//   .then((reg)=>{console.log('✔: ',reg)})
-//   .catch((err)=>{console.log('❌: ',err)})}
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register('sw.js')
+    .then(r=> {
+      document.querySelector('#kasago').innerHTML= `<p>离线服务正常……</p>`;
+    })
+    .catch(e=>{
+      document.querySelector('#kasago').innerHTML= `<p class="small err">离线错误！${e}</p><a class="label">刷新</a>`;
+    })
+}
+// 信息推送
+// if("PushManager" in window){}
 
-const P= document.querySelector('#presi');
 // screen val.
 const E= document.querySelector('#Ekrano');
 E.innerHTML+= `<p><span>页面可视区：</span><span>${document.body.clientWidth}</span></p>
@@ -132,12 +140,14 @@ E.innerHTML+= `<p><span>页面可视区：</span><span>${document.body.clientWid
               <p><span>色位：</span><span>${window.screen.colorDepth}</span></p>
               <p><span>px/em：</span><span>${window.screen.deviceXDPI}</span></p>`;
 
+// 打印API
+const P= document.querySelector('#presi');
 P.innerHTML+= `<p class="small">${navigator.userAgent}</p>`;
 
 // 地理信息
 if("geolocation" in navigator){
   navigator.geolocation.getCurrentPosition(d=>{
-    P.innerHTML+= `<p><span>地理信息：${d.coords.altitude}m ${d.coords.accuracy}° ${d.coords.heading}◈ ${d.coords.longitude}ɑ ${d.coords.latitude}β ${d.coords.speed}ζ</p>`
+    document.querySelector('#gyro').innerHTML= `<p class="small"><span>地理信息：${d.coords.altitude}m ${d.coords.accuracy}° ${d.coords.heading}◈ ${d.coords.longitude}ɑ ${d.coords.latitude}β ${d.coords.speed}ζ</p>`
   })
 }else{
   P.innerHTML+= `<p class="err">无法打开地理信息！</p>`;
@@ -145,24 +155,11 @@ if("geolocation" in navigator){
 // 陀螺仪
 if(window.DeviceOrientationEvent){
   window.addEventListener('deviceorientation', e=>{
-    P.innerHTML+= `<p>陀螺仪：${e.alpha} · ${e.beta} · ${e.gamma}</p>`;
+    document.querySelector('#gyro').innerHTML= `<p>陀螺仪：${e.alpha} · ${e.beta} · ${e.gamma}</p>`;
   })
 }else{
   p.innerHTML+= `<p class="err">陀螺仪信息错误！</p>`;
 }
-// sw.js
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register('sw.js')
-    .then(r=> {
-      P.innerHTML+= `<p>离线服务正常……</p>`;
-    })
-    .catch(e=>{
-      P.innerHTML+= `<p class="err">离线错误！${e}</p><a class="label">刷新</a>`;
-    })
-}
-
-// 信息推送
-// if("PushManager" in window){}
 </script>
 </body>
 </html>
